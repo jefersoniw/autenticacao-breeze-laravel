@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/register-user', [RegisteredUserController::class, 'createUser'])->name('register.user.create');
+    Route::post('/register-user', [RegisteredUserController::class, 'storeUser'])->name('register.user');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
 });
+
 
 require __DIR__ . '/auth.php';
